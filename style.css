@@ -1,0 +1,106 @@
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+    body{
+      background:#262626;
+      color:white;
+      font-family:'Montserrat';
+      line-height:35px;
+      letter-spacing: 1px;
+    }
+    #warp{
+      width:50%;
+      background:#0c0c0c;
+      padding:25px;
+      position: relative;
+      float:left;
+      height:75%;
+      box-shadow: 5px 5px 3px rgba(0,0,0,0.2);
+
+    }
+        #warp4{
+      width:50%;
+      background:#0c0c0c;
+      padding:25px;
+      position: relative;
+      float:left;
+      height:75%;
+      box-shadow: 5px 5px 3px rgba(0,0,0,0.2);
+
+    }
+        #warp1{
+      width:100%;
+      background:#0c0c0c;
+      padding:25px;
+      position: relative;
+      float:left;
+      box-shadow: 5px 5px 3px rgba(0,0,0,0.2);
+    }
+            #warp3{
+      width:100%;
+      background:#0c0c0c;
+      padding:25px;
+      position: relative;
+      float:left;
+      height: 90px;
+      box-shadow: 1px 5px 1px #ffa500;
+      margin-bottom:3px;
+    }
+    #warp,#warp1,#warp4{
+      opacity: .6;
+    }
+    #warp:hover{
+      opacity: 1;
+    }
+        #warp1:hover{
+      opacity: 1;
+    }        #warp4:hover{
+      opacity: 1;
+    }
+    #refreshbtn{
+      width:30px;
+      height:30px;
+      border-radius:50%;
+      border:2px solid white;
+      background:transparent;
+      cursor:pointer;
+      color:white;
+      font-size:15px;
+      position:relative;
+      transition:.9s;
+      outline:none;
+    }
+    #refreshbtn span{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+    }
+    #refreshbtn:hover{
+      background:white;
+      color:#0c0c0c;
+      border:2px solid #0c0c0c;
+      transform:rotate(360deg);
+
+    }
+    .info{
+      text-align:left;
+
+    }
+    #device_warp{
+    text-align:left;
+    background: black;
+    color:white;
+    border-radius:12px;
+    border:0;
+    padding:35px;
+    width:22%;
+    height: 180px;
+    margin:10px;
+    position: relative;
+    float:left;
+
+    }
+@media screen and (max-width: 800px) {
+  #warp, #warp1,#warp4{
+    width: 100%;
+  }
+}
