@@ -2,8 +2,10 @@
 <header>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Honeygain Monitor</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="bootstrap.css" />
 <link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="device_warp.css" /> 
+
 </header>
 <body>
 <center>
@@ -18,13 +20,13 @@
       <span><b>Current rate (/h) &#8773; <span id="crntrateh"></b></span><br>
       <span><b>Time before payout at average rate &#8773; <span id="payin"></span></b></span><br>
       <span><b>Time before payout at current rate &#8773; <span id="payin2"></span></b></span><br>
-      </span>
-      <button id="refreshbtn" onclick="sendd()"><span><ion-icon name="refresh-outline"></ion-icon></span></button><span id="lastre"></span>
+      </span><br>
+      <button id="refreshbtn" onclick="sendd()"><span><ion-icon name="refresh-outline"></ion-icon></span></button><br><span id="lastre"></span>
     </div>
  </div>
 
  <div id="warp4" class="container_fluid"><h3>5 Day Progress</h3><br>
-  <div class="chart-container" style="height:200px;width:600px">
+  <div class="chart-container1" style="height:200px;width:600px">
     <canvas id="chart" width="50" height="60"></canvas>
   </div>
  </div>

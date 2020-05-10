@@ -12,7 +12,7 @@
       padding:25px;
       position: relative;
       float:left;
-      height:75%;
+      height:80%;
       box-shadow: 5px 5px 3px rgba(0,0,0,0.2);
 
     }
@@ -22,7 +22,7 @@
       padding:25px;
       position: relative;
       float:left;
-      height:75%;
+      height:80%;
       box-shadow: 5px 5px 3px rgba(0,0,0,0.2);
 
     }
@@ -56,19 +56,47 @@
       opacity: 1;
     }
     #refreshbtn{
-      width:30px;
-      height:30px;
+      width:40px;
+      height:40px;
       border-radius:50%;
       border:2px solid white;
       background:transparent;
       cursor:pointer;
       color:white;
-      font-size:15px;
+      font-size:17px;
       position:relative;
       transition:.4s;
       outline:none;
     }
+    #srbtn{
+      width:120px;
+      height:40px;
+      border-radius:8px;
+      border:2px solid white;
+      background:white;
+      cursor:pointer;
+      color:#0c0c0c;
+      font-size:12px;
+      position:relative;
+      outline:none;
+      padding:1px;    
+      transition: .4s;
+    }
+    #srbtn:hover{
+      background: transparent;
+      color:white;
+    }
+    #srbtn span{
+
+      position: absolute;
+      top:50%;
+      left:50%;
+      transform: translate(-50%,-50%);
+      width: 100%;
+      height: 100%;
+    }
     #refreshbtn span{
+
       position:absolute;
       top:50%;
       left:50%;

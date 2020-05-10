@@ -19,8 +19,21 @@ $conn->query("CREATE TABLE IF NOT EXISTS updates (
                 date VARCHAR (400)        DEFAULT NULL
             )");
 }
+$query1 = "SELECT id FROM devices";
+$result1 = mysqli_query($conn, $query1);
+$sq01=$conn->query($query1);
+if($sq01 === true) {
+//
+}
+else{
+$conn->query("CREATE TABLE IF NOT EXISTS devices (
+                id     INT(255) AUTO_INCREMENT PRIMARY KEY,
+                name   VARCHAR (255)        DEFAULT NULL,
+                crs int (255)        DEFAULT NULL,
+                date VARCHAR (400)        DEFAULT NULL
 
-
+            )");
+}
 $action=$_GET['action'];
 $cr=mysqli_real_escape_string($conn,$_GET['cr']);
 $d=mysqli_real_escape_string($conn,date("Y-m-d H:i:s"));
@@ -55,20 +68,8 @@ switch($action){
   echo '<br><i style="font-size:12px;color:gray;">Last refresh : '.date("Y-m-d H:i:s").'</i>';
   break;
   case 'update_devices':
-  $sq3=$conn->query("INSERT INTO devices(name,crs,date) VALUES('".$dname."','".$crs."','".$ddate."')");
-  if($sq3 === true){
-  $today =date("jS F, Y");
-  $last=mysqli_fetch_assoc($conn->query("SELECT * FROM devices WHERE name = 'cata' ORDER BY id DESC LIMIT 1;"));
-  $dbdate=date("jS F, Y", strtotime($last['date']));
-  if($today == $dbdate){
-  echo $last['crs'];  
-  }
-  else{
-
-  }
-  }
+  $sq3=$conn->query("INSERT INTO devices(name,crs,date) VALUES('".$dname."','".$crs."','".$d."')");
   break;
 
 }
-
 ?>
