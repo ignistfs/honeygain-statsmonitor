@@ -7,7 +7,7 @@ A custom statistics monitor and estimator for Honeygain made in html,jquery and 
 
 # Features :
 
-  - 5 day progress chart \
+  - 5 day progress chart\
   - Payout estimator\
   - Overview and progress per device\
   - No bees\
