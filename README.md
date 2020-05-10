@@ -12,7 +12,7 @@ A custom statistics monitor and estimator for Honeygain made in html,jquery and 
   - Overview and progress per device
   - No bees
 ![generalinfo-screenshot](https://i.imgur.com/93htprw.png) 
-![devices-screenshot](https://i.imgur.com/cJrxG0o.png)
+![devices-screenshot](https://i.imgur.com/OPVfrQQ.png)
 ![devices-screenshot2](https://i.imgur.com/3DAUY6p.png)
 
 # Requirements :
