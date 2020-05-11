@@ -19,7 +19,7 @@ A custom statistics monitor and estimator for Honeygain made in html,jquery and 
 
   - PHP.
   - MYSQL.
-  - Apache HTTP Server.
+  - Apache HTTP Server. \
 Note : If you don't want to install these by yourself install xampp 
 
 # Find your token id
