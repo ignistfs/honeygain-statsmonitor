@@ -3,12 +3,9 @@ $( document ).ready(function() {var ctx = document.getElementById('chart').getCo
 $( document ).ready(function(){
   $('#warp').height('100%');
   $('#warp4').height('100%');
-
-  $('#warp').height($('#warp').height() - 150 + 'px');
-  $('#warp4').height($('#warp4').height() - 150 + 'px');
-
+  $('#warp').height($('#warp').height() + 150 + 'px');
+  $('#warp4').height($('#warp4').height() + 150 + 'px');
 });
-
 function sendd(){
 //start config
   var corsserver ='https://cors-anywhere.herokuapp.com/'; //leave it like this unless you have a cors proxy yourself
