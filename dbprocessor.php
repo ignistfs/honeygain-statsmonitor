@@ -1,8 +1,15 @@
 <?php
 error_reporting(0);
 
-include('db.php');
 
+
+include('db.php');
+$action=$_GET['action'];
+$cr=mysqli_real_escape_string($conn,$_GET['cr']);
+$d=mysqli_real_escape_string($conn,date("Y-m-d H:i:s"));
+$dname=mysqli_real_escape_string($conn,$_GET['dname']);
+$crs=mysqli_real_escape_string($conn,$_GET['crs']);
+$ddate =date("jS F, Y");
 
 //create table if not exist
 
@@ -34,12 +41,6 @@ $conn->query("CREATE TABLE IF NOT EXISTS devices (
 
             )");
 }
-$action=$_GET['action'];
-$cr=mysqli_real_escape_string($conn,$_GET['cr']);
-$d=mysqli_real_escape_string($conn,date("Y-m-d H:i:s"));
-$dname=mysqli_real_escape_string($conn,$_GET['dname']);
-$crs=mysqli_real_escape_string($conn,$_GET['crs']);
-$ddate =date("jS F, Y");
 switch($action){
   case 'update':
   $conn->query("INSERT INTO updates(cr,date) VALUES('".$cr."','".$d."')");
