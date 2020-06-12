@@ -1,5 +1,6 @@
 <?php
 include('db.php');
+error_reporting(0);
 $action=$_GET['action'];
 $cr=mysqli_real_escape_string($conn,$_GET['cr']);
 $d=mysqli_real_escape_string($conn,date("Y-m-d H:i:s"));
