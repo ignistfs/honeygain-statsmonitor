@@ -121,11 +121,23 @@ function sendd(){
              xhr.setRequestHeader("Authorization", token_id);
         },
         success:function(data){
+          $("#devices").html('');
+        var tmpData = JSON.parse(data);
+        var formattedJson = JSON.stringify(tmpData);
+        var pages = tmpData.meta.pagination['total_pages'];
+        while(ipage <= pages){
+                var items = tmpData.meta.pagination['total_items'];
+        $.ajax({
+        dataType: "text",
+        url: corsserver + 'https://dashboard.honeygain.com/api/v1/devices?page=' + ipage,
+        beforeSend: function(xhr) {
+             xhr.setRequestHeader("Authorization", token_id);
+        },
+        success:function(data){
         var tmpData = JSON.parse(data);
         var formattedJson = JSON.stringify(tmpData);
         var items = tmpData.meta.pagination['total_items'];
         var i = 0;
-          $("#devices").html('');
           while(items >= i){
           var devicename = tmpData.data[0+i]['title'];
           var totalcrs =tmpData.data[0+i].stats['total_credits'];
@@ -148,6 +160,11 @@ function sendd(){
                 $(".errors_area").fadeOut();
             },10000);
 },
+});
+        
+        
+        }
+        },
 });
       function updatedevices(dname,crs){
         $.ajax({
