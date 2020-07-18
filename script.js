@@ -14,7 +14,7 @@ function sendd(){
 // <----- START CONFIG ----->
     
   var corsserver ='https://cors-anywhere.herokuapp.com/'; //leave it like this unless you have a cors proxy yourself
-  var token_id= ''; //your token id ; find where to find it in readme file
+  var token_id= 'token id here'; //your token id ; find where to find it in readme file
 
 // <----- END CONFIG ----->
     
@@ -125,6 +125,7 @@ function sendd(){
         var tmpData = JSON.parse(data);
         var formattedJson = JSON.stringify(tmpData);
         var pages = tmpData.meta.pagination['total_pages'];
+        ipage = 1;
         while(ipage <= pages){
                 var items = tmpData.meta.pagination['total_items'];
         $.ajax({
@@ -162,7 +163,7 @@ function sendd(){
 },
 });
         
-        
+        ipage++;
         }
         },
 });
