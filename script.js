@@ -30,8 +30,8 @@ function sendd(){
         success:function(data){
           var tmpData = JSON.parse(data);
           var formattedJson = JSON.stringify(tmpData);
-          $('#balance').html(tmpData.data.payout['credits'] / 1000);
-          $('#today').html(tmpData.data.realtime['credits'] / 1000);
+          $('#balance').html((tmpData.data.payout['credits'] / 1000).toFixed(2));
+          $('#today').html((tmpData.data.realtime['credits'] / 1000).toFixed(2));
           $.ajax({
             dataType: "text",
             url: corsserver + 'https://dashboard.honeygain.com/api/v1/dashboards/traffic_stats',
