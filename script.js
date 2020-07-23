@@ -14,8 +14,7 @@ function sendd(){
 // <----- START CONFIG ----->
     
   var corsserver ='https://cors-anywhere.herokuapp.com/'; //leave it like this unless you have a cors proxy yourself
-  var token_id= 'token id here'; //your token id ; find where to find it in readme file
-
+  var token_id ='token_id'; //edit with your token id
 // <----- END CONFIG ----->
     
     
@@ -31,8 +30,8 @@ function sendd(){
         success:function(data){
           var tmpData = JSON.parse(data);
           var formattedJson = JSON.stringify(tmpData);
-          $('#balance').html(tmpData.data.payout['credits']);
-          $('#today').html(tmpData.data.realtime['credits']);
+          $('#balance').html(tmpData.data.payout['credits'] / 1000);
+          $('#today').html(tmpData.data.realtime['credits'] / 1000);
           $.ajax({
             dataType: "text",
             url: corsserver + 'https://dashboard.honeygain.com/api/v1/dashboards/traffic_stats',
@@ -56,8 +55,8 @@ function sendd(){
                 datasets: [{
                 label: 'credits',
                 data: [(day['25']['traffic'] / 10000000),(day['26']['traffic'] / 10000000),(day['27']['traffic']/ 10000000),(day['28']['traffic']/ 10000000),(day['29']['traffic']/ 10000000)],
-                backgroundColor: 'rgba(95,133,219, 0.2)',
-                backgroundColor: 'rgba(95,133,219, 0.2)',
+                backgroundColor: 'rgba(128, 20, 255, 0.43)',
+                backgroundColor: 'rgba(128, 20, 255, 0.43)',
                 borderWidth: 1
                 }]
               },
@@ -75,7 +74,7 @@ function sendd(){
 
             });
             myLineChart.canvas.parentNode.style.height = $('#warp4').height() - 70 + 'px';
-            myLineChart.canvas.parentNode.style.width = $('#warp4').width() -70 + 'px';
+            myLineChart.canvas.parentNode.style.width = $('#warp4').width() -20 + 'px';
 
           },
       });
@@ -114,6 +113,15 @@ function sendd(){
       },
       });
      //start devices
+
+function hashCode(str) {
+    var hash = 0;
+    for (var i = 0; i < str.length; i++) {
+        hash = ~~(((hash << 5) - hash) + str.charCodeAt(i));
+    }
+    return hash;
+}
+
       $.ajax({
         dataType: "text",
         url: corsserver + 'https://dashboard.honeygain.com/api/v1/devices',
@@ -140,20 +148,21 @@ function sendd(){
         var items = tmpData.meta.pagination['total_items'];
         var i = 0;
           while(items >= i){
-          var devicename = tmpData.data[0+i]['title'];
+          var devicename = window.btoa(tmpData.data[0+i]['title']);
           var totalcrs =tmpData.data[0+i].stats['total_credits'];
+          var did = hashCode(devicename);
           updatedevices(devicename,totalcrs);
           $('#errss').html('');
           var creditsi =tmpData.data[0+i].stats['total_credits'];
           switch(true){
           case (creditsi <=60):
-          $('#devices').append('<div style="border:2px solid #8b0000;" class="indentity'+i+'" id="device_warp"><span id="name">'+devicename+'</span><button onclick=\'getstats("'+ devicename +'","'+ totalcrs +'","'+i+'")\' id="viewpr"><span>View progress</span></button><span id="credits">'+totalcrs+'</span></div>');
+          $('#devices').append('<div style="border:2px solid #8b0000;" class="indentity'+did+'" id="device_warp"><span id="name">'+ window.atob(devicename)+'</span><button onclick=\'getstats("'+ devicename +'","'+ totalcrs +'","'+did+'")\' id="viewpr"><span>View progress</span></button><span id="credits">'+totalcrs+'</span></div>');
           break;
           case (creditsi < 450):
-          $('#devices').append('<div style="border:2px solid #ffa500;" class="indentity'+i+'" id="device_warp"><span id="name">'+devicename+'</span><button onclick=\'getstats("'+ devicename +'","'+ totalcrs +'","'+i+'")\' id="viewpr"><span>View progress</span></button><span id="credits">'+totalcrs+'</span></div>');
+          $('#devices').append('<div style="border:2px solid #ffa500;" class="indentity'+did+'" id="device_warp"><span id="name">'+ window.atob(devicename)+'</span><button onclick=\'getstats("'+ devicename +'","'+ totalcrs +'","'+did+'")\' id="viewpr"><span>View progress</span></button><span id="credits">'+totalcrs+'</span></div>');
           break;
           case (creditsi>=450):
-          $('#devices').append('<div style="border:2px solid #228b22;" class="indentity'+i+'" id="device_warp"><span id="name">'+devicename+'</span><button onclick=\'getstats("'+ devicename +'","'+ totalcrs +'","'+i+'")\' id="viewpr"><span>View progress</span></button><span id="credits">'+totalcrs+'</span></div>');
+          $('#devices').append('<div style="border:2px solid #228b22;" class="indentity'+did+'" id="device_warp"><span id="name">'+ window.atob(devicename)+'</span><button onclick=\'getstats("'+ devicename +'","'+ totalcrs +'","'+did+'")\' id="viewpr"><span>View progress</span></button><span id="credits">'+totalcrs+'</span></div>');
           }
             i++;
           }
@@ -186,7 +195,7 @@ function sendd(){
             $('.errors_area').fadeIn();
             setTimeout(function(){
             var eid= Math.floor((Math.random() * 100) + 1);
-            $('#errss').append('<div id="e'+eid+'" class="error">The device with the name <b><i>'+ devicename +'</i></b> seems to be offline, please check it!</div>');
+            $('#errss').append('<div id="e'+eid+'" class="error">The device with the name <b><i>'+ window.atob(devicename) +'</i></b> seems to be offline, please check it!</div>');
           },500);}
         },});
       }
@@ -195,7 +204,7 @@ function sendd(){
 function  clErrsA(){$(".errors_area").fadeOut();}
 function getstats(name,crs,i){
 $('.indentity'+ i).css('height','800px');
-$('.indentity'+ i).html('<span id="namepr">Name:<span id="name1">'+name+'</span></span><button onclick=\'getback("'+ name +'","'+ crs +'","'+ i +'")\' id="back"><span>Back to overview</span></button><span id="creditspr">Credits : '+crs+'</span><br><center><h2>Device progress</h2><br><div class="chart-container" style="height:500px;width:600px"><canvas id="chart1" width="50" height="60"></canvas></div></div>');
+$('.indentity'+ i).html('<span id="namepr">Name:<span id="name1">'+window.atob(name)+'</span></span><button onclick=\'getback("'+ name +'","'+ crs +'","'+ i +'")\' id="back"><span>Back to overview</span></button><span id="creditspr">Credits : '+crs+'</span><br><center><h2>Device progress</h2><br><div class="chart-container" style="height:500px;width:600px"><canvas id="chart1" width="50" height="60"></canvas></div></div>');
 loadgraph(name,i);
 }
 function loadgraph(name,i){
@@ -219,12 +228,10 @@ $.ajax({
         datasets: [
           {
             label: "CR",
-            fill: false,
+            fill: true,
             lineTension: 0.1,
-            backgroundColor: "rgba(59, 89, 152, 0.75)",
-            borderColor: "rgba(59, 89, 152, 1)",
-            pointHoverBackgroundColor: "rgba(59, 89, 152, 1)",
-            pointHoverBorderColor: "rgba(59, 89, 152, 1)",
+                backgroundColor: 'rgba(128, 20, 255, 0.43)',
+                backgroundColor: 'rgba(128, 20, 255, 0.43)',
             data: chartdatacrs
           }
         ]
@@ -257,7 +264,7 @@ $.ajax({
 }
 function getback(name,crs,i){
   $('.indentity'+ i).css('height','80px');
-  $('.indentity'+ i).html('<span id="name">Name:'+name+'</span><button onclick=\'getstats("'+ name +'","'+ crs +'","'+i+'")\' id="viewpr"><span>View progress</span></button><span id="credits">Credits : '+crs+'</span>');
+  $('.indentity'+ i).html('<span id="name">Name:'+window.atob(name)+'</span><button onclick=\'getstats("'+ name +'","'+ crs +'","'+i+'")\' id="viewpr"><span>View progress</span></button><span id="credits">Credits : '+crs+'</span>');
 
 }
 setInterval(function(){
