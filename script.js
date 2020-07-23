@@ -45,7 +45,7 @@ function sendd(){
             var day = tmpData.data.traffic_stats;
             var lastfivedays=((day['25']['traffic'] / 10000000) + (day['26']['traffic'] / 10000000) + (day['27']['traffic']/ 10000000) + (day['28']['traffic']/ 10000000) + (day['29']['traffic']/ 10000000));
             $('#avrgrate').html(Math.round(lastfivedays / 5 ) + 'CR/day');
-            $('#payin').html(Math.round((20000 - $('#balance').text()) /(lastfivedays / 5)) + ' day(s)');
+            $('#payin').html(Math.round((20000 - ($('#balance').text() *1000)) /(lastfivedays / 5)) + ' day(s)');
             //start graph
             var ctx = document.getElementById('chart').getContext('2d');
             var myLineChart = new Chart(ctx, {
@@ -89,7 +89,7 @@ function sendd(){
             success:function(data){
               var rateh =Math.round(data);
               var rated = rateh * 24;
-              $('#payin2').html(Math.round((20000 - $('#balance').html()) / rated) + ' day(s)');
+              $('#payin2').html(Math.round((20000 - ($('#balance').html() * 1000)) / rated) + ' day(s)');
               switch(true){
                 case (rateh <=10):
                 $('#crntrateh').html('<span style="color:#8b0000">' + rateh + 'CR/h</span>');
