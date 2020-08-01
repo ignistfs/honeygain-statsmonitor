@@ -1,0 +1,48 @@
+<html>
+<header>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Honeygain Monitor</title>
+<link rel="stylesheet" href="style/bootstrap.css" />
+<link rel="stylesheet" href="style/style.css" />
+
+</header>
+<body>
+<div id="warp9" style="display:none" class="errors_area"><span style="cursor:pointer;position:absolute;top:20px;right:20px" onclick="clErrsA()">[close]</span><br><center><h2>Please look out!</h2></center><br><div id="errss"></div></div>
+<center>
+  <div class="container_fluid" style="width:100%" id="warp3"><h4><b><span style="font-size:21px;color:#8014ff ">honeygain</span></b><span >Monitor</span></h4></div><br><div class="container_fluid" id="warp">
+    <div class="info">
+      <br><h3>General info</h3><br>
+      <span><b>Total balance: <span style="color:#8014ff ">$<span id="balance"></span></b></span></span>
+      <br><span><b>Total today: <span style="color:#8014ff ">$<span id="today"></span></b></span></span>
+      <br>
+      <span><b>Average rate &#8773; <span id="avrgrate"></b></span><br>
+      <span><b>Current rate &#8773; <span id="crntrated"></b></span><br>
+      <span><b>Current rate (/h) &#8773; <span id="crntrateh"></b></span><br>
+      <span><b>Time before payout at average rate &#8773; <span id="payin"></span></b></span><br>
+      <span><b>Time before payout at current rate &#8773; <span id="payin2"></span></b></span><br>
+      </span><br>
+      <button id="refreshbtn" onclick="sendd()"><span><ion-icon name="refresh-outline"></ion-icon></span></button><br><span id="lastre"></span>
+      <span style="display:none" style="font-size:14px;">Auto refresh in <span  id="countdown"><span id="hour">0</span>h<span id="min">59</span> minute<span style="font-size:11px">(s)</span> <span id="seconds">59</span></span></span>
+    </div>
+ </div>
+
+ <div id="warp4" class="container_fluid"><h3>5 Day Progress</h3><br>
+  <div class="chart-container1" style="height:200px;width:600px">
+    <canvas id="chart" width="50" height="60"></canvas>
+  </div>
+ </div>
+ <div id="warp1" style="width:100%;text-align: center;" class="container_fluid">
+   <br><br><h3>Devices</h3><br><br>
+   <div id="devices"><br><br><h5>Nothing for now...</h5>
+   </div>
+ </div>
+</center>
+</body>
+<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+<script  src="src/script.js"></script>
+</html>
