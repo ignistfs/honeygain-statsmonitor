@@ -42,6 +42,6 @@ Make sure to copy it along with "Bearer"
  2)Edit "functions/db.php" with your database info and "functions/config.php" with your token id
 
 # Notes
- 1)I advise letting the autorefresh do his thing and not refresh in short interval of time for a better precision in calculating the rate per h (it's also less possible for the cors proxy to fail) \
+ 1)I advise letting the autorefresh do his thing and not refresh in short interval of time for a better precision in calculating the rate per h
  2)Please name your devices for the device progression function to work for each of them \
  3)It may be a hassle for some to install and run a web server on their computer, if so you can use 000webhost.com or awardspace.com 
