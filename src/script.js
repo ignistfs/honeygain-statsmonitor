@@ -6,6 +6,13 @@ $( document ).ready(function(){
   $('#warp').height($('#warp').height() + 150 + 'px');
   $('#warp4').height($('#warp4').height() + 150 + 'px');
 });
+
+$(document).ready(function() {
+
+sendd();
+
+});
+
 function sendd(){
 //start balances
   $.get("functions/getbalance.php",function(data){
